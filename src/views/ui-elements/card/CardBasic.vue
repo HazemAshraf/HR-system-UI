@@ -1,6 +1,6 @@
 <!-- =========================================================================================
     Author: Hazem Ashraf
-  Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
+  Author URL: https://www.linkedin.com/in/hazem-ashraf-1242169b/
 ========================================================================================== -->
 
 <template>
@@ -435,57 +435,57 @@ export default{
       // Card 1
       this.$http.get("/api/users/pixinvent/product/1")
         .then((response) => { this.card_1 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 2
       this.$http.get("/api/users/pixinvent/product/sales/1")
         .then((response) => { this.card_2 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 3
       this.$http.get("/api/users/pixinvent/product/goals/1")
         .then((response) => { this.card_3 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 4
       this.$http.get("/api/users/89")
         .then((response) => { this.card_4 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 5
       this.$http.get("/api/users/58")
         .then((response) => { this.card_5 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 6
       this.$http.get("/api/users/16")
         .then((response) => { this.card_6 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 7
       this.$http.get("/api/place/18")
         .then((response) => { this.card_7 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 8
       this.$http.get("/api/place/76/weather")
         .then((response) => { this.card_8 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Chat Log
       this.$http.get("/api/chat/demo-1/log")
         .then((response) => { this.chatLog = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Card 9
       this.$http.get("/api/item/12/review")
         .then((response) => { this.card_9 = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
 
       // Player Options
       this.$http.get("/api/card/card-basic/player-option")
         .then((response) => { this.playerOptions = response.data })
-        .catch((error)   => { console.log(error) })
+        .catch((error)   => { //console.log(error) })
     }
 }
 </script>

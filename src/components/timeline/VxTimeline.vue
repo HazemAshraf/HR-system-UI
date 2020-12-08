@@ -3,9 +3,9 @@
     Description: Timeline Component
     Component Name: VxTimeline
     ----------------------------------------------------------------------------------------
-    Item Name: Traffic Management Application
+    Item Name: Human Resources Application
   Author: Hazem Ashraf
-  Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
+  Author URL: https://www.linkedin.com/in/hazem-ashraf-1242169b/
 ========================================================================================== -->
 
 <template>

@@ -1,6 +1,6 @@
 <!-- =========================================================================================
   Author: Hazem Ashraf
-  Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
+  Author URL: https://www.linkedin.com/in/hazem-ashraf-1242169b/
 ========================================================================================== -->
 
 <template>
@@ -57,7 +57,7 @@
             />
           </div>
           </div>
-          <hr>
+          <!-- <hr>
           <h3>Personal Info.</h3>
           <div class="vx-row">
               <div class="vx-col md:w-1/2 sm:w-1/2 w-full mb-2">
@@ -75,7 +75,7 @@
               placeholder="Category"
             />
           </div>
-          </div>
+          </div> -->
           <!-- <h1 v-show="category != null && employee.company != null">Hazoma</h1> -->
           <!-- <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
             <label class="text-sm opacity-75">City</label>
@@ -312,7 +312,7 @@ export default {
     category(obj) {
       axios
         .get(
-          `${process.env.VUE_APP_BASE_URI}/dashboard/main_report/category/jobs?category=${obj.name}`
+          `${process.env.VUE_APP_BASE_URI}/dashboard/main_report/category/jobs/?category=${obj.name}`
         )
         .then(response => {
           this.job_titles = response.data.data;

@@ -1,5 +1,5 @@
 <!-- =========================================================================================
-  Author: Hazem Ashraf
+  Author: Hossam Ali
   Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
 ========================================================================================== -->
 
@@ -44,7 +44,7 @@
             </label>
             <v-select
               label="name"
-              :reduce="name => name"
+              :reduce="(name) => name"
               :options="categorys"
               :clearable="false"
               :dir="$vs.rtl ? 'rtl' : 'ltr'"
@@ -59,18 +59,29 @@
             </label>
             <v-select
               label="name"
-              :reduce="name => name"
+              :reduce="(name) => name"
               :options="companies"
               :clearable="false"
               :dir="$vs.rtl ? 'rtl' : 'ltr'"
-              v-model="items.company"
+              v-model="company"
               class="mb-4"
               placeholder="Company"
             />
           </div>
         </div>
-        <div v-if="show" class="vx-row">
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+        <div class="vx-row">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
+            <label class="text-sm opacity-75">Departments</label>
+            <v-select
+              :options="allDepartments"
+              :clearable="false"
+              :dir="$vs.rtl ? 'rtl' : 'ltr'"
+              v-model="department"
+              class="mb-4"
+              placeholder="Departments"
+            />
+          </div>
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Job Title</label>
             <v-select
               :options="job_titles"
@@ -81,7 +92,7 @@
               placeholder="Job Title"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Employee Name</label>
             <vs-input
               class="w-full"
@@ -91,7 +102,7 @@
               v-model="items.employee_name"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Employee Code</label>
             <vs-input
               class="w-full"
@@ -101,7 +112,7 @@
               v-model="items.employee_code"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Reporting To</label>
             <vs-input
               class="w-full"
@@ -111,7 +122,7 @@
               v-model="items.reporting_to"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">City</label>
             <v-select
               :options="cities"
@@ -122,7 +133,7 @@
               placeholder="City"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Area</label>
             <v-select
               :options="areas"
@@ -133,7 +144,7 @@
               placeholder="Area"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Authorization Area Name</label>
             <v-select
               :options="area_names"
@@ -144,11 +155,11 @@
               placeholder="Authorization Area Name"
             />
           </div>
-          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2">
+          <div class="vx-col md:w-1/4 sm:w-1/2 w-full mb-2" v-if="show">
             <label class="text-sm opacity-75">Absenteeism Days</label>
             <v-select
               label="name"
-              :reduce="name => name"
+              :reduce="(name) => name"
               :options="absenteeismDays"
               :clearable="false"
               :dir="$vs.rtl ? 'rtl' : 'ltr'"
@@ -157,23 +168,33 @@
               placeholder="Absenteeism Days"
             />
           </div>
-         
-        </div>
-        <div class="vx-row">
-           <div class="vx-col md:w-1/2 sm:w-1/2 w-full">
+
+          <div class="vx-col md:w-1/2 sm:w-1/2 w-full mt-6">
             <div class="vx-row">
               <div class="vx-col md:w-1/2 sm:w-1/1 w-full">
-                <vs-button type="filled" @click.prevent="addNewFilter" class="w-full mb-2">Filters</vs-button>
+                <vs-button
+                  type="filled"
+                  @click.prevent="addNewFilter"
+                  class="w-full mb-2"
+                  >Filters</vs-button
+                >
               </div>
               <div class="vx-col md:w-1/2 sm:w-1/1 w-full">
-                <vs-button color="dark"  type="filled" @click="show = !show" class="w-full mb-2"> Advanced Filters</vs-button>
+                <vs-button
+                  color="dark"
+                  type="filled"
+                  @click="show = !show"
+                  class="w-full mb-2"
+                >
+                  Advanced Filters</vs-button
+                >
               </div>
             </div>
           </div>
         </div>
       </form>
     </vx-card>
-    <div class="vx-card p-6">
+    <div class="vx-card p-6 vs-con-loading__container" id="div-with-loading">
       <div class="flex flex-wrap items-center">
         <!-- ITEMS PER PAGE -->
         <div class="flex-grow">
@@ -183,13 +204,13 @@
             >
               <span class="mr-2">
                 {{
-                currentPage * paginationPageSize - (paginationPageSize - 1)
+                  currentPage * paginationPageSize - (paginationPageSize - 1)
                 }}
                 -
                 {{
-                itemsData.length - currentPage * paginationPageSize > 0
-                ? currentPage * paginationPageSize
-                : itemsData.length
+                  itemsData.length - currentPage * paginationPageSize > 0
+                    ? currentPage * paginationPageSize
+                    : itemsData.length
                 }}
                 From {{ itemsData.length }}
               </span>
@@ -220,7 +241,9 @@
           @input="updateSearchQuery"
           placeholder="Search..."
         />
-        <vs-button class="mb-4 md:mb-0" @click="gridApi.exportDataAsCsv()">Export CSV</vs-button>
+        <vs-button class="mb-4 md:mb-0" @click="gridApi.exportDataAsCsv()"
+          >Export CSV</vs-button
+        >
       </div>
 
       <!-- AgGrid Table -->
@@ -233,7 +256,6 @@
         :defaultColDef="defaultColDef"
         :rowData="itemsData"
         rowSelection="multiple"
-    
         :animateRows="true"
         :floatingFilter="false"
         :pagination="true"
@@ -286,13 +308,17 @@ export default {
       areas: [],
       area_names: [],
       job_titles: [],
+      allDepartments: [],
       city: null,
+      company: null,
       category: null,
+      department: null,
       items: {
         start_date: null,
         end_date: null,
         category: null,
         company: null,
+        department: null,
         job_title: null,
         employee_name: null,
         employee_code: null,
@@ -318,7 +344,6 @@ export default {
       gridApi: null,
       gridOptions: {},
       defaultColDef: {
-        
         resizable: true,
       },
       columnDefs: [
@@ -470,13 +495,42 @@ export default {
         });
     },
     category(obj) {
-      axios
-        .get(
-          `${process.env.VUE_APP_BASE_URI}/dashboard/main_report/category/jobs?category=${obj.name}`
-        )
-        .then((response) => {
-          this.job_titles = response.data.data;
-        });
+      this.department = null;
+      this.items.job_title = null;
+      if (this.company !== null) {
+        axios
+          .get(
+            `${process.env.VUE_APP_BASE_URI}/dashboard/main_report/departments/?company=${this.company.name}&category=${obj.name}`
+          )
+          .then((response) => {
+            this.allDepartments = response.data.data;
+          });
+      }
+    },
+    company(obj) {
+      this.department = null;
+      this.items.job_title = null;
+      if (this.category !== null) {
+        axios
+          .get(
+            `${process.env.VUE_APP_BASE_URI}/dashboard/main_report/departments/?category=${this.category.name}&company=${obj.name}`
+          )
+          .then((response) => {
+            this.allDepartments = response.data.data;
+          });
+      }
+    },
+    department(obj) {
+      this.items.job_title = null;
+      if (this.company !== null && this.items.category !== null) {
+        axios
+          .get(
+            `${process.env.VUE_APP_BASE_URI}/dashboard/main_report/department/jobs?category=${this.category.name}&company=${this.company.name}&department=${obj}`
+          )
+          .then((response) => {
+            this.job_titles = response.data.data;
+          });
+      }
     },
   },
   computed: {
@@ -504,33 +558,47 @@ export default {
   methods: {
     addNewFilter() {
       this.$validator.validateAll().then((result) => {
+       
         if (result) {
-          this.$vs.loading();
+          this.$vs.loading({
+            container: "#div-with-loading",
+            scale: 0.6,
+          });
+          this.items.company = this.company;
           this.items.category = this.category;
+          this.items.department = this.department;
           this.items.city = this.city;
-          
+
           if (this.items.Absenteeism_Days !== null) {
-            this.items.Absenteeism_Days = this.items.Absenteeism_Days.name
+            this.items.Absenteeism_Days = this.items.Absenteeism_Days.name;
           }
           this.$store
             .dispatch(
               "hrReportManagement/fetchItemsMainReport",
               Object.assign({}, this.items)
             )
-            .then( response => {
-              this.$vs.loading.close();
-              if ( response.data.status === 404) {
-                 this.$vs.notify({
+            .then((response) => {
+              this.$vs.loading.close("#div-with-loading > .con-vs-loading");
+              if (response.data.data.length === 0) {
+                this.$vs.notify({
+                  title: "Information",
+                  text: "No data available",
+                  iconPack: "feather",
+                  icon: "icon-alert-circle",
+                  color: "success",
+                });
+              } else if (response.data.status === 404) {
+                this.$vs.notify({
                   title: "Error",
                   text: "Make sure select the main filters ",
                   iconPack: "feather",
                   icon: "icon-alert-circle",
                   color: "danger",
-              });
+                });
               }
             })
             .catch(() => {
-              this.$vs.loading.close();
+              this.$vs.loading.close("#div-with-loading > .con-vs-loading");
               this.$vs.notify({
                 title: "Error",
                 text: "Make sure select the main filters ",
@@ -550,20 +618,9 @@ export default {
     onToChange(selectedDates, dateStr) {
       this.$set(this.configFromdateTimePicker, "maxDate", dateStr);
     },
-    setColumnFilter(column, val) {
-      const filter = this.gridApi.getFilterInstance(column);
-      let modelObj = null;
-
-      if (val !== "all") {
-        modelObj = { type: "equals", filter: val };
-      }
-
-      filter.setModel(modelObj);
-      this.gridApi.onFilterChanged();
-    },
     resetColFilters(card) {
       card.removeRefreshAnimation(500);
-      this.items.start_date = this.items.end_date = this.items.category = this.category = this.items.company = this.items.job_title = this.items.employee_name = this.items.employee_code = this.items.reporting_to = this.items.city = this.city = this.items.area = this.items.area_name = this.items.Absenteeism_Days = null;
+      this.items.start_date = this.items.end_date = this.category = this.company = this.items.job_title = this.items.employee_name = this.items.employee_code = this.items.reporting_to = this.items.city = this.city = this.items.area = this.items.area_name = this.items.Absenteeism_Days = null;
 
       // Reset Grid Filter
       // this.gridApi.setFilterModel(null);

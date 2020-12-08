@@ -1,6 +1,6 @@
 <!-- =========================================================================================
   Author: Hazem Ashraf
-  Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
+  Author URL: https://www.linkedin.com/in/hazem-ashraf-1242169b/
 ========================================================================================== -->
 
 <template>
@@ -13,7 +13,7 @@
           icon="MonitorIcon"
           icon-right
           statistic="78.9k"
-          statisticTitle="Site Traffic"
+          statisticTitle="Count of working employees in last 4 months"
           :chartData="siteTraffic.series"
         />
       </div>
@@ -207,7 +207,7 @@ export default {
         series: [
              {
             name: "Count of Employee last ",
-            data: [20, 66, 96, 55],
+            data: [6000, 5000, 3000, 4000],
           },
         ],
       },

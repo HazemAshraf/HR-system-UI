@@ -2,9 +2,9 @@
   File Name: router.js
   Description: Routes for vue-router. Lazy loading is enabled.
   ----------------------------------------------------------------------------------------
-  Item Name: Traffic Management Application
+  Item Name: Human Resources Application
   Author: Hazem Ashraf
-  Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
+  Author URL: https://www.linkedin.com/in/hazem-ashraf-1242169b/
 ==========================================================================================*/
 
 import Vue from "vue";
@@ -77,8 +77,50 @@ const router = new Router({
           }
         },
         {
+          path: "/hr-report/vacation-report",
+          name: "vacation-report",
+          component: () => import("@/views/hr-report/vacation-report/VacationReport.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "HR Report" },
+              { title: "Vacation Report", active: true }
+            ],
+            pageTitle: "Vacation Report",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/hr-report/excuse-report",
+          name: "excuse-report",
+          component: () => import("@/views/hr-report/excuse-report/ExcuseReport.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "HR Report" },
+              { title: "Excuse Report", active: true }
+            ],
+            pageTitle: "Excuse Report",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/hr-report/mission-report",
+          name: "mission-report",
+          component: () => import("@/views/hr-report/mission-report/MissionReport.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "HR Report" },
+              { title: "Mission Report", active: true }
+            ],
+            pageTitle: "Mission Report",
+            rule: "editor"
+          }
+        },
+        {
           path: "/Add/Employee",
-          name: "main-report",
+          name: "add-employee",
           component: () => import("@/views/Employee/Add.vue"),
           meta: {
             breadcrumb: [
@@ -90,6 +132,236 @@ const router = new Router({
             rule: "editor"
           }
         },
+        {
+          path: "/GetAll/Employee",
+          name: "get-employees",
+          component: () => import("@/views/Employee/GetAll.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Employee" },
+              { title: "GetAll", active: true }
+            ],
+            pageTitle: "Employees",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/Update/Company",
+          name: "update-company",
+          component: () => import("@/views/Company/Update.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Company", url: "/" },
+              { title: "Company",url: "/GetAll/Company" },
+              { title: "Update Company", active: true }
+            ],
+            pageTitle: "Update Company",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/Add/Company",
+          name: "add-company",
+          component: () => import("@/views/Company/Add.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Company", url: "/" },
+              { title: "Company",url: "/GetAll/Company" },
+              { title: "Add Company", active: true }
+            ],
+            pageTitle: "Add Company",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/GetAll/Company",
+          name: "get-companies",
+          component: () => import("@/views/Company/GetAll.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Company" },
+              { title: "GetAll", active: true }
+            ],
+            pageTitle: "Companies",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/Update/Department",
+          name: "update-department",
+          component: () => import("@/views/Department/Update.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Department", url: "/" },
+              { title: "Department", url: "/GetAll/Department" },
+              { title: "Update Department", active: true }
+            ],
+            pageTitle: "Update Department",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/Add/Department",
+          name: "add-department",
+          component: () => import("@/views/Department/Add.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Department", url: "/" },
+              { title: "Department", url: "/GetAll/Department" },
+              { title: "Add Department", active: true }
+            ],
+            pageTitle: "Add Department",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/GetAll/Department",
+          name: "get-departments",
+          component: () => import("@/views/Department/GetAll.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Department" },
+              { title: "GetAll", active: true }
+            ],
+            pageTitle: "Departments",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/Update/Job",
+          name: "update-job",
+          component: () => import("@/views/Job/Update.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Job", url: "/" },
+              { title: "Job", url: "/GetAll/Job" },
+              { title: "Update Job", active: true }
+            ],
+            pageTitle: "Update Job",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/Add/Job",
+          name: "add-job",
+          component: () => import("@/views/Job/Add.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Job", url: "/" },
+              { title: "Job", url: "/GetAll/Job" },
+              { title: "Add Job", active: true }
+            ],
+            pageTitle: "Add Job",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/GetAll/Job",
+          name: "get-jobs",
+          component: () => import("@/views/Job/GetAll.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Job" },
+              { title: "GetAll", active: true }
+            ],
+            pageTitle: "Jobs",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/location/getall/cities",
+          name: "get-cities",
+          component: () => import("@/views/Location/cities/GetAll.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Location" },
+              { title: "cities" },
+              { title: "GetAll", active: true }
+            ],
+            pageTitle: "Cities",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/location/add/cities",
+          name: "add-city",
+          component: () => import("@/views/Location/cities/Add.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Location" },
+              { title: "cities",url: "/location/getall/cities" },
+              { title: "Add", active: true }
+            ],
+            pageTitle: "Add City",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/location/update/cities",
+          name: "update-city",
+          component: () => import("@/views/Location/cities/Update.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Location" },
+              { title: "cities",url: "/location/getall/cities" },
+              { title: "Update", active: true }
+            ],
+            pageTitle: "Update City",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/location/getall/areas",
+          name: "get-areas",
+          component: () => import("@/views/Location/areas/GetAll.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Location" },
+              { title: "areas" },
+              { title: "GetAll", active: true }
+            ],
+            pageTitle: "Areas",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/location/add/areas",
+          name: "add-area",
+          component: () => import("@/views/Location/areas/Add.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Location" },
+              { title: "areas", url: "/location/getall/areas" },
+              { title: "Add", active: true }
+            ],
+            pageTitle: "Add Area",
+            rule: "editor"
+          }
+        },
+        {
+          path: "/location/update/areas",
+          name: "update-area",
+          component: () => import("@/views/Location/areas/Update.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Home", url: "/" },
+              { title: "Location" },
+              { title: "areas", url: "/location/getall/areas" },
+              { title: "Update", active: true }
+            ],
+            pageTitle: "Update Area",
+            rule: "editor"
+          }
+        }
 
       ]
     },

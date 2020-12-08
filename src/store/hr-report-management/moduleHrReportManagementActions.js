@@ -1,5 +1,5 @@
 /*=========================================================================================
-  Author: Hazem Ashraf
+  Author: Hossam Ali
   Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
 ==========================================================================================*/
 
@@ -19,9 +19,9 @@ export default {
   //         reject(error);
   //       });
   //   });
-  // },
-  fetchItemsMainReport({ commit },items) {
-    
+  // },  
+  fetchItemsMainReport({ commit }, items) {
+
     return new Promise((resolve, reject) => {
 
       axios
@@ -31,6 +31,7 @@ export default {
             end_date: items.end_date,
             category: items.category.name,
             company: items.company.name,
+            department: items.department,
             job_title: items.job_title,
             employee_name: items.employee_name,
             employee_code: items.employee_code,
@@ -50,12 +51,106 @@ export default {
         });
     });
   },
-  fetchItemsAttendance({ commit },items) {
+  fetchItemsVacationReport({ commit }, items) {
+
+    return new Promise((resolve, reject) => {
+
+      axios
+        .get(`${process.env.VUE_APP_BASE_URI}/dashboard/vacation_report/`, {
+          params: {
+            from: items.from,
+            to: items.to,
+            category: items.category.name,
+            company: items.company.name,
+            department: items.department,
+            job_title: items.job_title,
+            employee_name: items.employee_name,
+            code: items.employee_code,
+            reporting_to: items.reporting_to,
+            city: items.city,
+            area: items.area,
+            status: items.status,
+            annual_pool: items.annual_pool
+          }
+        })
+        .then(response => {
+          commit("SET_ITEMSV", response.data.data);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+  fetchItemsExcuseReport({ commit }, items) {
+   
+    return new Promise((resolve, reject) => {
+
+      axios
+        .get(`${process.env.VUE_APP_BASE_URI}/dashboard/excuse_report/?`, {
+          params: {
+            from: items.from,
+            to: items.to,
+            category: items.category.name,
+            company: items.company.name,
+            department: items.department,
+            job_title: items.job_title,
+            employee_name: items.employee_name,
+            code: items.employee_code,
+            reporting_to: items.reporting_to,
+            city: items.city,
+            area: items.area,
+            status: items.status,
+          }
+        })
+        .then(response => {
+         
+          commit("SET_ITEMSE", response.data.data);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+  fetchItemsMissionReport({ commit }, items) {
+    
+    return new Promise((resolve, reject) => {
+
+      axios
+        .get(`${process.env.VUE_APP_BASE_URI}/dashboard/mission_report/?`, {
+          params: {
+            from: items.from,
+            to: items.to,
+            category: items.category.name,
+            company: items.company.name,
+            department: items.department,
+            job_title: items.job_title,
+            employee_name: items.employee_name,
+            code: items.employee_code,
+            reporting_to: items.reporting_to,
+            city: items.city,
+            area: items.area,
+            status: items.status,
+          }
+        })
+        .then(response => {
+         
+          commit("SET_ITEMSM", response.data.result);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+  
+  fetchItemsAttendance({ commit }, items) {
 
     items.start_date_ms = new Date(items.start_date_ms).getTime();
     items.end_date_ms = new Date(items.end_date_ms).getTime();
 
-    // console.log( items)
+    // //console.log( items)
     return new Promise((resolve, reject) => {
       axios
         .get(`${process.env.VUE_APP_BASE_URI}/users/generate_hr_time_attendance`, {
@@ -73,12 +168,12 @@ export default {
         });
     });
   },
-  fetchItemsTimeAttendance({ commit },items) {
+  fetchItemsTimeAttendance({ commit }, items) {
 
     items.start_date_ms = new Date(items.start_date_ms).getTime();
     items.end_date_ms = new Date(items.end_date_ms).getTime();
     // items = JSON.stringify(items);
-    // console.log(items)
+    // //console.log(items)
     return new Promise((resolve, reject) => {
       axios
         .get(`${process.env.VUE_APP_BASE_URI}/users/generate_erp_hr_time_attendance`, {

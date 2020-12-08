@@ -1,5 +1,5 @@
 <!-- =========================================================================================
-  Author: Hazem Ashraf
+  Author: Hossam Ali
   Author URL: https://www.linkedin.com/in/hossam-ali-7bb41810b/
 ========================================================================================== -->
 
@@ -271,10 +271,10 @@ export default {
   },
   methods: {
     addNewUser() {
-      // console.log(this.items);
+      // //console.log(this.items);
       this.$validator.validateAll().then(result => {
         if (result) {
-          // console.log(this.items);
+          // //console.log(this.items);
 
           this.$store.dispatch(
             "hrReportManagement/fetchItemsTimeAttendance",
